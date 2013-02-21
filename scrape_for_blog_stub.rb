@@ -1,4 +1,4 @@
-class President  
+class President
   
   def self.create_presidents_from_urls
     # - run the method self.collect_president_urls

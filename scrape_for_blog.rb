@@ -61,9 +61,6 @@ class Scrape
   def get_name
     if @doc.css("h1")
       @name = @doc.css("h1").inner_text
-      # if @name.empty?
-      #   @name = @doc.css("h1 span").inner_text
-      # end
     end
     puts @name
   end
