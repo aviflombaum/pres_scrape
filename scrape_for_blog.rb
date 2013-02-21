@@ -9,14 +9,19 @@ class President
   def self.create_presidents_from_urls
     self.collect_president_urls.collect do |url|
       begin
-        President.new(url)
+        President.new_from_url(url)
         sleep 1
       rescue
         next
       end
     end
   end
-
+  
+  def self.new_from_url(url)
+    p = President.new
+    p.get_data(url)
+    p
+  end
   def self.collect_president_urls
     wiki_page = "http://en.wikipedia.org"
     index_url = wiki_page + "/wiki/List_of_Presidents_of_the_United_States"
@@ -25,8 +30,8 @@ class President
     president_anchors.map {|a| wiki_page + a.attr('href')}
   end
 
-  def initialize(url)
-    self.get_data(url)
+  def initialize
+    
   end
 
   def get_data(url)
